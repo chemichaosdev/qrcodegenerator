@@ -23,21 +23,21 @@ def generate():
         qr_canvas.create_image(280/2, 280/2, anchor=CENTER, image=img_tk)
         qr_canvas.image = img_tk
 
-        result = f"Imagem salva com sucesso em {img_path}"
+        result = f"Saved in {img_path}"
         result_text["text"] = result
     else:
-        result_text["text"] = "Por favor, escolha um diretório antes de gerar o QR Code."
+        result_text["text"] = "Please, choose a path before generate QR Code."
 
 def choose_directory():
     global img_directory
     img_directory = filedialog.askdirectory()
-    directory_label["text"] = f"Diretório escolhido: {img_directory}"
+    directory_label["text"] = f"Path: {img_directory}"
 
 window = Tk()
-window.title("Gerador de QRCode")
+window.title("QRCode Generator")
 window.geometry("300x570")
 
-hint_text = Label(window, text="Insira o texto")
+hint_text = Label(window, text="Insert the text")
 hint_text.pack(padx=20, pady=5)
 
 entry_var = StringVar()
@@ -45,13 +45,13 @@ entry_var = StringVar()
 input_box = Entry(window, textvariable=entry_var, width=280)
 input_box.pack(padx=20, pady=10)
 
-choose_directory_button = Button(window, text="Escolher Diretório", command=choose_directory, width=200, height=1)
+choose_directory_button = Button(window, text="Choose path", command=choose_directory, width=200, height=1)
 choose_directory_button.pack(padx=20, pady=5)
 
-button = Button(window, text="Gerar", command=generate, width=200, height=2)
+button = Button(window, text="Generate", command=generate, width=200, height=2)
 button.pack(padx=20, pady=5)
 
-directory_label = Label(window, text="Nenhum diretório escolhido ainda.", wraplength=200)
+directory_label = Label(window, text="No path choosen.", wraplength=200)
 directory_label.pack(padx=20, pady=5)
 
 qr_canvas = Canvas(window, width=280, height=280, background='white')
